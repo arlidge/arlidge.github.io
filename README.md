@@ -30,5 +30,14 @@ My name is [Lorenz!](http://learningcurve.co.nz/) and I'm a maker, fabricator an
 <p align="center">
 	<a href="https://github.com/arlidge/github-readme-streak-stats">
 		<img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Noman Iqbal's streak" src="https://github-readme-streak-stats.herokuapp.com/?user=arlidge&theme=monokai-metallian&hide_border=true"/></a>
-<p align="center"> If you can dream it, you can do it🔥 </p>
-</p>
+<h2 align="left">
+  <div style="display: flex; align-items: center;">
+    <div>
+      <img src="https://raw.githubusercontent.com/ARCANGEL0/ARCANGEL0/refs/heads/master/img/hackerman.gif" height="40px" width="60px"></img>
+    </div>
+    <div style="margin-left: 10px; text-align: center;">
+      $ whoami
+    </div>
+  </div>
+</h2>
+
