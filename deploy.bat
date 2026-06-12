@@ -59,6 +59,21 @@ if defined DIRTY (
     )
 )
 
+REM --- pull/rebase to absorb anything new on the remote ---------------------
+echo.
+echo Fetching and rebasing onto origin/!BRANCH!...
+git pull --rebase --autostash origin !BRANCH!
+if errorlevel 1 (
+    echo.
+    echo Rebase hit conflicts. To finish manually:
+    echo   1. Open the conflicted files and resolve the ^<^<^<^<^<^<^< markers
+    echo   2. git add ^<file^>
+    echo   3. git rebase --continue
+    echo   4. Re-run deploy.bat
+    echo To bail out completely:  git rebase --abort
+    goto :fail
+)
+
 REM --- push -----------------------------------------------------------------
 echo.
 echo Pushing to origin/!BRANCH!...
