@@ -16,7 +16,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/animate.css">
-  <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap' rel='stylesheet' type='text/css'>
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css'>
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -70,10 +72,11 @@
 
         <div class="row header-info">
           <div class="col-sm-10 col-sm-offset-1 text-center">
-            <h1 class="wow fadeIn header-title">
-              <span class="learning">LEARNING</span>
-              <span class="curve">CURVE</span>
+            <h1 class="header-title kinetic" aria-label="Learning Curve">
+              <span class="learning" aria-hidden="true"><span class="ch">L</span><span class="ch">E</span><span class="ch">A</span><span class="ch">R</span><span class="ch">N</span><span class="ch">I</span><span class="ch">N</span><span class="ch">G</span></span>
+              <span class="curve" aria-hidden="true"><span class="ch">C</span><span class="ch">U</span><span class="ch">R</span><span class="ch">V</span><span class="ch">E</span></span>
             </h1>
+            <span class="brut-tape" role="presentation">[FILE_001] DESIGN //  FABRICATION //  AUCKLAND //  EST. 2014</span>
             <p class="lead wow fadeIn" data-wow-delay="0.5s"> <br>
             </p>
             <div class="row">
@@ -88,6 +91,13 @@
         </div>
       </div>
     </header>
+
+    <div class="brut-marquee" aria-hidden="true">
+      <div class="brut-marquee-track">
+        <span>SIGNS</span><span>&#9632;</span><span>FABRICATION</span><span>&#9632;</span><span>CNC WOOD</span><span>&#9632;</span><span>CNC ACRYLIC</span><span>&#9632;</span><span>ALUMINIUM</span><span>&#9632;</span><span>STEEL</span><span>&#9632;</span><span>BESPOKE</span><span>&#9632;</span><span>AUCKLAND NZ</span><span>&#9632;</span>
+        <span>SIGNS</span><span>&#9632;</span><span>FABRICATION</span><span>&#9632;</span><span>CNC WOOD</span><span>&#9632;</span><span>CNC ACRYLIC</span><span>&#9632;</span><span>ALUMINIUM</span><span>&#9632;</span><span>STEEL</span><span>&#9632;</span><span>BESPOKE</span><span>&#9632;</span><span>AUCKLAND NZ</span><span>&#9632;</span>
+      </div>
+    </div>
 
     <section id="be-the-first" class="pad-xl">
       <div class="container-fluid">
@@ -119,6 +129,7 @@
             <br>
 
             <ul class="list-unstyled pricing-table text-center">
+              <li class="brut-num">01 / 03</li>
               <li class="headline"><h5 class="white">Signage </h5></li>
               <li class="price"><div class="amount"><small></small></div></li>
               <li class="info">Small Business</li>
@@ -135,6 +146,7 @@
           <div class="col-sm-4 pricing-container wow fadeInUp" data-wow-delay="1.3s">
             <br />
             <ul class="list-unstyled pricing-table text-center">
+              <li class="brut-num">02 / 03</li>
               <li class="headline"><h5 class="white">Fabrication</h5></li>
               <li class="price"><div class="amount"><small></small></div></li>
               <li class="info">Custom Fabrication</li>
@@ -147,6 +159,7 @@
           <div class="col-sm-4 pricing-container wow fadeInUp" data-wow-delay="1.3s">
             <br />
             <ul class="list-unstyled pricing-table text-center">
+              <li class="brut-num">03 / 03</li>
               <li class="headline"><h5 class="white">Design</h5></li>
               <li class="price"><div class="amount"><small></small></div></li>
               <li class="info">Sculpture</li>
@@ -178,21 +191,33 @@
 
      <section id="main-info" class="pad-sm">
        <div class="container">
-         <div class="row">
+         <div class="row neu-contact-row">
            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
-             <hr class="line black">
-             <h3>Phone</h3>
-             <p><a href="tel:02041695006" class="contact-link">ph: 020 4169 5006</a></p>
+             <div class="neu-contact-card">
+               <div class="neu-icon" aria-hidden="true">
+                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.93.34 1.84.66 2.71a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.37-1.37a2 2 0 0 1 2.11-.45c.87.32 1.78.54 2.71.66A2 2 0 0 1 22 16.92z"/></svg>
+               </div>
+               <h3>Phone</h3>
+               <p><a href="tel:02041695006" class="contact-link">020 4169 5006</a></p>
+             </div>
            </div>
            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
-             <hr  class="line black">
-             <h3>Location</h3>
-             <p>East Ave, Whangaparaoa</p>
+             <div class="neu-contact-card">
+               <div class="neu-icon" aria-hidden="true">
+                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+               </div>
+               <h3>Location</h3>
+               <p>East Ave, Whangaparaoa</p>
+             </div>
            </div>
            <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
-             <hr  class="line black">
-             <h3>Email</h3>
-             <p><a href="mailto:laurence.learningcurve@gmail.com" class="contact-link">laurence.learningcurve@gmail.com</a></p>
+             <div class="neu-contact-card">
+               <div class="neu-icon" aria-hidden="true">
+                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+               </div>
+               <h3>Email</h3>
+               <p><a href="mailto:laurence.learningcurve@gmail.com" class="contact-link">laurence.learningcurve@gmail.com</a></p>
+             </div>
            </div>
          </div>
        </div>

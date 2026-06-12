@@ -1,1 +1,41 @@
+# --- OS junk ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# --- Secrets / local config ---
+.env
+.env.*
+*.local
+secrets.json
+
+# --- Logs and temp files ---
+*.log
+*.tmp
+*.bak
+
+# --- Node / build tools (in case you add a bundler later) ---
+node_modules/
+dist/
+build/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Python (the local preview server) ---
+__pycache__/
+*.pyc
