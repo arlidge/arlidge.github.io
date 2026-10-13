@@ -523,7 +523,8 @@ hr.line {
 
 
 #invite {
-  background-image: url('../img/render_round_top_plastic.jpg');
+  background-image: none; /* the image here is a floating <img>, .wrap-bob */
+  background-color: transparent; /* the white page shows through */
   min-height: 300px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -872,7 +873,7 @@ footer {
   --ink: #000000;
   --ink-soft: #1a1a1a;
   --mute: #6b6b6b;
-  --accent: #FFE600;
+  --accent: #C0C0C0; /* silver (was signage yellow #FFE600) */
   --bw: 3px;
   --drop: 6px 6px 0 0 var(--ink);
   --drop-lg: 10px 10px 0 0 var(--ink);
@@ -894,6 +895,9 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--ink);
 }
+
+/* Bird cursor everywhere (hotspot on the beak tip) */
+*, *::before, *::after { cursor: url(../img/bird-cursor.png) 0 7, auto !important; }
 
 /* Sharp corners everywhere */
 *, *::before, *::after { border-radius: 0 !important; }
@@ -1033,7 +1037,7 @@ header {
   box-shadow: var(--drop);
   max-width: 720px;
   width: calc(100% - 28px);
-  margin: 14px auto 0;
+  margin: 0 auto;
   padding: 0 0 0 14px;
   display: flex;
   align-items: center;
@@ -1153,11 +1157,177 @@ header {
   to   { transform: translateX(-50%); }
 }
 
+/* ----- PRODUCT STRIP (manual sideways scroll) ----- */
+#product-strip {
+  background: var(--bg);
+  position: relative;
+}
+.product-track {
+  position: relative; /* card offsets in product-strip.js are measured from here */
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 28px;
+  padding: 50px 28px;
+  scrollbar-width: none;
+}
+.product-track::-webkit-scrollbar { display: none; }
+
+.strip-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--accent);
+  color: var(--ink);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--drop-sm);
+}
+.strip-arrow--prev { left: 16px; }
+.strip-arrow--next { right: 16px; }
+.strip-arrow:hover,
+.strip-arrow:focus-visible {
+  background: var(--ink);
+  color: var(--accent);
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 360px;
+  scroll-snap-align: start;
+  background: transparent; /* label keeps its own white below */
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--drop);
+  color: var(--ink);
+  display: block;
+  transition: transform 80ms linear, box-shadow 80ms linear;
+}
+.product-card:hover,
+.product-card:focus {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--drop-lg);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.product-img {
+  aspect-ratio: 1 / 1;
+  border-bottom: var(--bw) solid var(--ink);
+  overflow: hidden;
+}
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.stl-slot { background: transparent; } /* site background shows behind the 3D model */
+.product-stl {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.product-img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(45deg, var(--bg) 0 12px, #f0f0f0 12px 24px);
+}
+.product-img--placeholder span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.product-label {
+  background: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.product-card:hover .product-label { background: var(--accent); }
+
+@media (max-width: 767px) {
+  .product-track { gap: 18px; padding: 36px 16px 30px; scroll-padding: 0 16px; }
+  .product-card { width: 78vw; }
+}
+
+/* ----- BIRD BREAK ----- */
+#bird-break {
+  background: var(--bg);
+  padding: 60px 16px 0 4vw;
+  text-align: left;
+  position: relative;
+  z-index: 1; /* over the Shop section's background, under its heading and cards */
+}
+.bird-bob {
+  width: 620px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin-bottom: -320px; /* pull the Shop section up under the bird */
+  animation: birdBob 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes birdBob {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-36px) rotate(1.5deg); }
+}
+@media (max-width: 767px) {
+  #bird-break { padding: 40px 16px 0; }
+  .bird-bob { width: 85vw; margin-bottom: -120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bird-bob { animation: none; }
+}
+
+/* ----- FLOATING IMAGE (render_round_wall_wood) in #invite ----- */
+#invite {
+  position: relative;
+  z-index: 1; /* over the Contact section's background, under its cards */
+}
+#invite > .container { position: relative; z-index: 2; } /* text stays in front */
+.wrap-bob {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -180px; /* overhang into the Contact section */
+  width: 1448px; /* the image's own size */
+  max-width: 100%;
+  height: auto;
+  animation: birdBob 4.5s ease-in-out -2.2s infinite; /* same bob as the bird, out of step */
+  will-change: transform;
+  pointer-events: none;
+}
+#main-info > .container { position: relative; z-index: 2; }
+@media (max-width: 767px) {
+  .wrap-bob { bottom: -90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wrap-bob { animation: none; }
+}
+
 /* ----- BOLD IMAGE SECTIONS ----- */
 #be-the-first,
 #invite {
   background-attachment: fixed;
-  border-bottom: var(--bw) solid var(--ink);
 }
 
 #be-the-first h2,
@@ -1195,9 +1365,10 @@ header {
 /* ----- PRICING / SERVICE CARDS ----- */
 #pricing {
   background: var(--bg);
-  border-bottom: var(--bw) solid var(--ink);
   padding: 100px 0;
 }
+/* keep the heading and cards in front of the overlapping bird */
+#pricing > .container { position: relative; z-index: 2; }
 
 #pricing h2.black {
   color: var(--ink);
@@ -1222,6 +1393,56 @@ header {
 }
 
 .pricing-container { padding: 18px; }
+
+/* Prints card dropdown */
+.pricing-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.pricing-caret {
+  font-size: 0.5em;
+  transition: transform 80ms linear;
+}
+.pricing-dropdown.is-open .pricing-caret,
+.pricing-dropdown:hover .pricing-caret,
+.pricing-dropdown:has(:focus-visible) .pricing-caret { transform: rotate(180deg); }
+
+.pricing-table .pricing-options {
+  display: none;
+  padding: 0;
+}
+/* opens on hover (mouse), keyboard focus, or tap (.is-open, touch screens) */
+.pricing-dropdown.is-open .pricing-options,
+.pricing-dropdown:hover .pricing-options,
+.pricing-dropdown:has(:focus-visible) .pricing-options { display: block; }
+.pricing-options .shop-link {
+  display: block;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.pricing-options .shop-link:last-child { border-bottom: 0; }
+.pricing-options .shop-link::before { content: '> '; }
+.pricing-options .shop-link:hover,
+.pricing-options .shop-link:focus {
+  background: var(--ink);
+  color: var(--accent);
+  text-decoration: none;
+}
 
 .pricing-table {
   background: var(--bg);
@@ -1392,6 +1613,231 @@ header {
 }
 .form-control:focus { outline: 0; background: var(--accent); }
 
+/* ----- SHOP PAGE ----- */
+.shop-page .navbar { top: 0; }
+
+header.shop-header {
+  height: auto;
+  display: block;
+  padding: 96px 10px 36px;
+}
+
+.shop-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 7rem;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-shadow: 6px 6px 0 var(--accent);
+  margin: 0;
+}
+
+#shop {
+  background: var(--bg);
+  padding: 100px 0;
+}
+
+.print-col { padding: 18px; }
+
+.print-card {
+  background: transparent; /* body and foot keep their own white below */
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--drop);
+  margin-bottom: 30px;
+  transition: transform 80ms linear, box-shadow 80ms linear;
+}
+.print-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--drop-lg);
+}
+
+.print-card .brut-num {
+  background: var(--ink);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.print-img {
+  aspect-ratio: 4 / 5;
+  border-bottom: var(--bw) solid var(--ink);
+  overflow: hidden;
+}
+.print-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.print-img--white { background: var(--bg); } /* for prints with transparent backgrounds */
+.print-img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(45deg, var(--bg) 0 12px, #f0f0f0 12px 24px);
+}
+.print-img--placeholder span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.print-body {
+  background: var(--bg);
+  padding: 18px 20px 14px;
+  border-bottom: var(--bw) solid var(--ink);
+}
+.print-name {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.print-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.print-foot {
+  background: var(--bg);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.print-price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  padding: 14px 20px;
+  color: var(--ink);
+}
+.print-buy {
+  background: var(--accent);
+  border-left: var(--bw) solid var(--ink);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+.print-buy:hover,
+.print-buy:focus {
+  background: var(--ink);
+  color: var(--accent);
+  text-decoration: none;
+}
+.print-buy[aria-disabled="true"] {
+  background: var(--bg);
+  color: var(--mute);
+  pointer-events: none;
+}
+
+/* small bird next to the Home button, overlaying the cards */
+.corner-bird {
+  position: fixed;
+  right: 150px; /* just left of the Home button */
+  bottom: 14px;
+  z-index: 1039;
+  width: 380px;
+  height: auto;
+  pointer-events: none;
+  animation: birdPerch 4.5s ease-in-out infinite;
+}
+@keyframes birdPerch {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-6px) rotate(1.5deg); }
+}
+@media (max-width: 767px) {
+  .corner-bird { width: 220px; right: 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .corner-bird { animation: none; }
+}
+
+.home-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--ink);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--drop-sm);
+  padding: 12px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: transform 80ms linear, box-shadow 80ms linear;
+}
+.home-fab:hover,
+.home-fab:focus {
+  background: var(--ink);
+  color: var(--accent);
+  text-decoration: none;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--drop);
+}
+
+/* Paper / Plastic tabs under the shop title */
+.shop-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.shop-tabs a {
+  background: var(--bg);
+  color: var(--ink);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--drop-sm);
+  padding: 10px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.shop-tabs a:hover,
+.shop-tabs a:focus {
+  background: var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+}
+.shop-tabs a.is-active {
+  background: var(--ink);
+  color: var(--accent);
+}
+
+@media (max-width: 991px) {
+  .shop-title { font-size: 5.5rem; }
+}
+@media (max-width: 767px) {
+  header.shop-header { padding: 84px 10px 28px; }
+  .shop-title { font-size: 3.8rem; }
+}
+
 /* ----- FOCUS VISIBILITY ----- */
 *:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
@@ -1425,3 +1871,183 @@ header {
   .brut-marquee-track { font-size: 16px; }
 }
 
+
+/* ==========================================================================
+   TITLE BACKGROUND: packing_04 (paper) behind the title area only.
+   The header clips it, so the marquee bar underneath cuts it off; every
+   section below is plain white.
+   Delete this whole block for a plain white header too.
+   ========================================================================== */
+header,
+header.shop-header {
+  background: url(../img/packing_04_web.jpg) center / cover no-repeat; /* 2000px web copy of packing_04.jpg */
+}
+
+/* ==========================================================================
+   ROUNDED CORNERS + DITHERED TITLE
+   The brutalist palette (white, black, yellow, hard shadows) with rounded
+   corners on every component, plus the dithered orange-to-yellow hero title.
+   Delete this whole block to go back to square corners and the black title.
+   ========================================================================== */
+:root {
+  --round: 22px;
+  --round-sm: 14px;
+}
+
+/* cards: clip their contents to the rounded shape */
+.product-card,
+.print-card,
+.pricing-table,
+.neu-contact-card {
+  border-radius: var(--round) !important;
+  overflow: hidden;
+}
+
+/* buttons and tags */
+.strip-arrow,
+.home-fab,
+.shop-tabs a,
+.signin a,
+.brut-tape,
+.neu-contact-card h3 { border-radius: 999px !important; }
+#invite h2,
+.neu-icon,
+.form-control { border-radius: var(--round-sm) !important; }
+.navbar-inverse .navbar-toggle { border-radius: 12px !important; }
+
+/* navbar: flat against the top of the window, rounded underneath */
+.navbar > .container {
+  border-radius: 0 0 var(--round) var(--round) !important;
+  overflow: hidden;
+}
+
+/* hero title (and the shop page title): dithered gold, dark gold to pale gold.
+   img/title-dither.png is a tiny ordered-dither gradient, stretched to the
+   letter height with hard pixels and clipped to the letter shapes. */
+.header-title.kinetic,
+.shop-title,
+.kinetic .curve {
+  color: #D4AF37; /* fallback if the browser can't clip a background to text */
+  text-shadow: none;
+}
+/* hard shadow as a filter: a text-shadow would paint over the dither */
+.header-title.kinetic,
+.shop-title { filter: drop-shadow(4px 4px 0 var(--ink)); }
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .kinetic .ch,
+  .shop-title .ch {
+    background: url(../img/title-dither.png) repeat-x 0 0 / auto 100%;
+    image-rendering: pixelated;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+/* desktop: hero title at double size (7rem -> 14rem), spacing scaled to match */
+@media (min-width: 992px) {
+  .header-title.kinetic {
+    font-size: 14rem;
+    filter: drop-shadow(6px 6px 0 var(--ink));
+  }
+  .kinetic .learning { margin-bottom: -1rem; }
+  .kinetic .curve { margin-left: 4rem; }
+}
+
+/* desktop: shop page title at double size too */
+@media (min-width: 992px) {
+  .shop-title {
+    font-size: 14rem;
+    filter: drop-shadow(6px 6px 0 var(--ink));
+  }
+}
+
+/* desktop: finer dither texture so the pixels stay ~2px on the double-size titles */
+@media (min-width: 992px) {
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .kinetic .ch,
+    .shop-title .ch { background-image: url(../img/title-dither-fine.png); }
+  }
+}
+
+/* jarallax (title background parallax) puts the image in a layer behind the
+   header's content; the header needs its own stacking context to hold it */
+header.jarallax { z-index: 0; }
+
+/* "Shop" heading above the product row (moved up from the Shop cards section) */
+#product-strip .section-title {
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+  padding: 80px 16px 0;
+}
+.product-wrap { position: relative; } /* the arrows centre on the cards, not the heading */
+@media (max-width: 991px) {
+  #product-strip .section-title { font-size: 44px; }
+}
+@media (max-width: 767px) {
+  #product-strip .section-title { font-size: 34px; padding-top: 56px; }
+}
+
+/* scrolling bar: polished gold, lighter along the top like a metal strip */
+.brut-marquee {
+  background: linear-gradient(180deg, #F7E7A6 0%, #D4AF37 45%, #B8922A 60%, #E3C766 100%);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* letters of the "SHOP" heading, moved individually by js/shop-scatter.js */
+.scatter-ch {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* hero title ash effect (js/title-ash.js) */
+.title-ash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6; /* above the title */
+  pointer-events: none;
+}
+/* once the intro animation is done, the script takes over each letter's transform */
+.header-title.kinetic.ch-ready .ch {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+/* shop title letters: separate boxes so each can be clipped, filled and blown away */
+.shop-title .ch {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   SHOP PAGE: GREYSCALE COLOUR SCHEME
+   Yellow accents and the paper photo go grey on shop.html; the title
+   and scrolling bar stay gold. The print artwork itself stays in colour.
+   Delete this block to give the shop page the homepage colours again.
+   ========================================================================== */
+.shop-page { --accent: #c9c9c9; }
+/* no paper behind the shop title; it sits behind the print cards instead,
+   in the section below the scrolling bar */
+.shop-page header.shop-header { background: var(--bg); }
+.shop-page #shop {
+  background: url(../img/packing_04_web_grey.jpg) center / cover no-repeat;
+}
+
+/* no black line where the title area meets the scrolling bar */
+header { border-bottom: 0; }
+
+/* tighter spacing inside the shorter shop header */
+header.shop-header .brut-tape { margin-top: 20px; }
+header.shop-header .shop-tabs { margin-top: 20px; }
