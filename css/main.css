@@ -2051,3 +2051,193 @@ header { border-bottom: 0; }
 /* tighter spacing inside the shorter shop header */
 header.shop-header .brut-tape { margin-top: 20px; }
 header.shop-header .shop-tabs { margin-top: 20px; }
+
+/* bigger "PRINTS" title at every screen size */
+.shop-title { font-size: 9rem; }
+@media (max-width: 991px) { .shop-title { font-size: 8rem; } }
+@media (max-width: 767px) { .shop-title { font-size: 5.5rem; } }
+@media (min-width: 992px) { .shop-title { font-size: 18rem; } }
+@media (min-width: 1200px) { .shop-title { font-size: 20rem; } }
+
+/* homepage Shop cards that are plain links (Home Decor) */
+.pricing-link,
+.pricing-link:hover,
+.pricing-link:focus { display: block; color: inherit; text-decoration: none; }
+
+/* ----- Product card with several views (decor.html, js/gallery.js) ----- */
+.print-img--landscape { aspect-ratio: 4 / 3; }
+.print-img--landscape img { object-fit: contain; } /* show the whole render, no cropping */
+
+.gallery-thumbs {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg);
+  border-bottom: var(--bw) solid var(--ink);
+}
+.gallery-thumb {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  background: var(--bg);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--round-sm) !important;
+  overflow: hidden;
+  opacity: 0.55;
+  transition: opacity 80ms linear, box-shadow 80ms linear, transform 80ms linear;
+}
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.gallery-thumb:hover,
+.gallery-thumb:focus-visible { opacity: 1; }
+.gallery-thumb.is-active {
+  opacity: 1;
+  box-shadow: var(--drop-sm);
+  transform: translate(-2px, -2px);
+}
+
+/* heading for a second group of cards inside a shop-style page (decor.html: Wall Art) */
+.shop-section-title {
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  margin: 70px 0 30px;
+}
+@media (max-width: 991px) { .shop-section-title { font-size: 44px; } }
+@media (max-width: 767px) { .shop-section-title { font-size: 34px; margin: 50px 0 20px; } }
+
+/* wide (16:10) gallery cards whose images fill the frame edge to edge (Felix) */
+.print-img--wide { aspect-ratio: 16 / 10; }
+.gallery--wide .gallery-thumb { aspect-ratio: 16 / 10; }
+.gallery--wide .gallery-thumb img { object-fit: cover; }
+
+/* Felix cards: renders of different shapes sit whole on their own yellow backdrop colour */
+.gallery--felix .print-img { background: #FFC335; }
+.gallery--felix .gallery-thumbs { gap: 8px; padding: 10px; }
+.gallery--felix .gallery-thumb { background: #FFC335; flex: 0 1 25%; }
+
+/* longer page titles ("WALL ART"): a notch smaller so both words fit on one line */
+.shop-title .ch-gap { display: inline-block; width: 0.28em; }
+.shop-title.shop-title--long { font-size: 7rem; }
+@media (max-width: 991px) { .shop-title.shop-title--long { font-size: 6rem; } }
+@media (max-width: 767px) { .shop-title.shop-title--long { font-size: 4.2rem; } }
+@media (min-width: 992px) { .shop-title.shop-title--long { font-size: 13rem; } }
+@media (min-width: 1200px) { .shop-title.shop-title--long { font-size: 15rem; } }
+
+/* four category cards: slightly smaller card titles so "Home Decor" fits a quarter-width card */
+@media (min-width: 992px) {
+  #pricing .pricing-table .headline h5 { font-size: 22px; }
+}
+
+/* ----- Product page (felix.html): info panel and variation buttons ----- */
+.gallery-thumbs[hidden] { display: none; } /* thumbnail groups of the variations not selected */
+
+.variant-block {
+  background: var(--bg);
+  border-bottom: var(--bw) solid var(--ink);
+  padding: 16px 20px 20px;
+}
+.variant-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.variant-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.variant-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 12px;
+  background: var(--bg);
+  color: var(--ink);
+  border: var(--bw) solid var(--ink);
+  border-radius: 999px !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.variant-btn .swatch {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  border-radius: 50% !important;
+  flex: 0 0 auto;
+}
+.variant-btn:hover,
+.variant-btn:focus-visible { background: var(--accent); }
+.variant-btn.is-active {
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: var(--drop-sm);
+}
+.variant-btn.is-active .swatch { border-color: var(--bg); }
+
+/* the info panel is a card you read, not a card you click: no hover lift */
+.print-card.product-info:hover {
+  transform: none;
+  box-shadow: var(--drop);
+}
+
+/* card titles and images that are links (wall-art.html) keep the card's look */
+.print-name a,
+.print-name a:hover,
+.print-name a:focus { color: inherit; text-decoration: none; }
+a.print-img { display: block; }
+
+/* the black Felix render has a white backdrop, not the yellow one of the colour renders */
+.gallery--felix .gallery-thumb[data-src*="felix-black"] { background: #ffffff; }
+
+/* a gallery with only a couple of views: keep the thumbnails small instead of stretching them */
+.gallery-thumbs--few .gallery-thumb { flex: 0 1 25%; }
+
+/* longest page titles ("SCAREDY CAT"): smaller again so the two words fit on one line */
+.shop-title.shop-title--xlong { font-size: 5rem; }
+@media (max-width: 991px) { .shop-title.shop-title--xlong { font-size: 5rem; } }
+@media (max-width: 767px) { .shop-title.shop-title--xlong { font-size: 3rem; } }
+@media (min-width: 992px) { .shop-title.shop-title--xlong { font-size: 10rem; } }
+@media (min-width: 1200px) { .shop-title.shop-title--xlong { font-size: 12rem; } }
+
+/* no paper photo behind the cards on the Wall Art page or its product pages: plain white */
+.wall-art-page #shop,
+.product-page #shop { background: var(--bg); }
+
+/* Home Decor: one star motif on the left of the cards section. js/decor-star.js
+   slides it off the left edge as the page scrolls. */
+.decor-page #shop {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden; /* clips the star as it leaves, so the page can't scroll sideways */
+}
+.decor-page #shop > .container { position: relative; z-index: 1; }
+.decor-star {
+  --star: min(46vw, 620px);
+  position: absolute;
+  left: 2vw;
+  top: 50%;
+  margin-top: calc(var(--star) / -2);
+  width: var(--star);
+  height: var(--star);
+  background: url(../img/star-motif_web.jpg) center / contain no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
