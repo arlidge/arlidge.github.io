@@ -48,7 +48,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Home</a></li>
             <li><a href="#main-info">Contact</a></li>
-            <li><a href="#product-strip" class="scroll">Shop</a></li>          </ul>
+            <li><a href="#product-strip" class="scroll">Shop</a></li>
+            <li><a href="#services" class="scroll">Services</a></li>          </ul>
           <ul class="nav navbar-nav navbar-left">
             <li><a href="#main-info" class="scroll"></a></li>
           </ul>
@@ -62,7 +63,8 @@
           <div class="col-xs-6">
           </div>
           <div class="col-xs-6 signin text-right navbar-nav">
-            <a href="#main-info" class="scroll">Contact</a> &nbsp; &nbsp;<a href="#product-strip" class="scroll">Shop</a>          </div>
+            <a href="#main-info" class="scroll">Contact</a> &nbsp; &nbsp;<a href="#product-strip" class="scroll">Shop</a> &nbsp; &nbsp;<a href="#services" class="scroll">Services</a>
+          </div>
         </div>
 
         <div class="row header-info">
@@ -95,10 +97,12 @@
     </div>
 
     <!-- Product strip: infinite sideways loop (js/product-strip.js clones these cards, so list each product once).
-         Swap each .product-img placeholder for <img src="img/..." alt="...">. -->
+         Each card links to the product's page. product-img--contain shows a whole render on white;
+         product-img--cover fills the square with the artwork. -->
     <section id="product-strip" aria-labelledby="shop-heading">
       <h2 class="section-title" id="shop-heading">Shop</h2>
-      <div class="product-wrap">
+      <!-- Product row hidden for now: delete the "hidden" attribute below to show it again -->
+      <div class="product-wrap" hidden>
       <button type="button" class="strip-arrow strip-arrow--prev" aria-label="Previous products">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
       </button>
@@ -106,12 +110,10 @@
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
       </button>
       <div class="product-track">
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
-        <a class="product-card" href="shop.html"><div class="product-img product-img--placeholder"><span>Image</span></div><div class="product-label"><span>Product</span><span>$&mdash;</span></div></a>
+        <a class="product-card" href="felix.html"><div class="product-img product-img--contain"><span class="product-tag">Wall Art</span><img src="img/felix-black_web.jpg" alt="Felix wall art in black on a white base" loading="lazy"></div><div class="product-label"><span>Felix</span><span>$&mdash;</span></div></a>
+        <a class="product-card" href="rooster-tee.html"><div class="product-img product-img--contain"><span class="product-tag">Apparel</span><img src="img/rooster-tee-back_web.jpg" alt="Rooster Tee, back print" loading="lazy"></div><div class="product-label"><span>Rooster Tee</span><span>$&mdash;</span></div></a>
+        <a class="product-card" href="decor.html"><div class="product-img product-img--contain"><span class="product-tag">Home Decor</span><img src="img/garden-window_web.jpg" alt="Garden Window: wooden frame with a green fern-pattern panel" loading="lazy"></div><div class="product-label"><span>Garden Window</span><span>$&mdash;</span></div></a>
+        <a class="product-card" href="scaredy-cat.html"><div class="product-img product-img--contain"><span class="product-tag">Wall Art</span><img src="img/scaredy-cat-4x3_web.jpg" alt="Scaredy Cat wall art: a black cat silhouette on a red base" loading="lazy"></div><div class="product-label"><span>Scaredy Cat</span><span>$&mdash;</span></div></a>
       </div>
       </div>
     </section>
@@ -130,11 +132,11 @@
 
             <br>
 
-            <!-- Prints: plays the click sound once per visit, then opens the shop (js/shop-sound.js) -->
+            <!-- Posters: plays the click sound once per visit, then opens the shop (js/shop-sound.js) -->
             <a href="shop.html" class="pricing-link" data-click-sound>
               <ul class="list-unstyled pricing-table text-center">
                 <li class="brut-num">01 / 04</li>
-                <li class="headline"><h5 class="white">Prints</h5></li>
+                <li class="headline"><h5 class="white">Posters</h5></li>
               </ul>
             </a>
           </div>
@@ -142,10 +144,12 @@
 
           <div class="col-sm-6 col-md-3 pricing-container wow fadeInUp" data-wow-delay="1.3s">
             <br />
-            <ul class="list-unstyled pricing-table text-center">
-              <li class="brut-num">02 / 04</li>
-              <li class="headline"><h5 class="white">Apparel</h5></li>
-            </ul>
+            <a href="apparel.html" class="pricing-link">
+              <ul class="list-unstyled pricing-table text-center">
+                <li class="brut-num">02 / 04</li>
+                <li class="headline"><h5 class="white">Apparel</h5></li>
+              </ul>
+            </a>
           </div>
           <div class="col-sm-6 col-md-3 pricing-container wow fadeInUp" data-wow-delay="1.3s">
             <br />
@@ -224,6 +228,24 @@
        </div>
      </section>
 
+     <!-- Services: the CNC Services card (js/plotter.js draws it; strokes in js/plotter-bird-paths.js) -->
+     <section id="services" aria-labelledby="services-heading">
+       <h2 class="section-title" id="services-heading">Services</h2>
+       <div class="services-body">
+         <article class="plotter-card">
+           <div class="brut-num">CNC Services</div>
+           <canvas class="plotter-canvas" role="img" aria-label="Animation of a pen plotter, seen from above, drawing the bird"></canvas>
+           <div class="plotter-foot">
+             <span>Top-down view</span>
+             <span class="plotter-actions">
+               <button type="button" class="plotter-replay">Replay</button>
+               <a class="plotter-link" href="services.html">View services &rarr;</a>
+             </span>
+           </div>
+         </article>
+       </div>
+     </section>
+
      </section>
 
     <!-- Javascript
@@ -244,6 +266,8 @@
     </script>
     <script src="js/product-strip.js"></script>
     <script src="js/shop-sound.js"></script>
+    <script src="js/plotter-bird-paths.js"></script>
+    <script src="js/plotter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="js/title-ash.js"></script>

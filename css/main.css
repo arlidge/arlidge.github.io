@@ -2244,3 +2244,152 @@ a.print-img { display: block; }
 
 /* option buttons without a colour swatch (Type: 3D print / laser cut / wooden) */
 .variant-btn:not(:has(.swatch)) { padding-left: 16px; }
+
+/* square product photos (apparel) */
+.print-img--square { aspect-ratio: 1 / 1; }
+.print-img--square img { object-fit: contain; }
+
+/* Apparel pages: plain white behind the cards, no paper photo */
+.apparel-page #shop { background: var(--bg); }
+
+/* product row images: whole renders on white, or artwork filling the square */
+.product-img--contain { background: var(--bg); }
+.product-img--contain img { object-fit: contain; }
+.product-img--cover { background: var(--bg); }
+
+/* section label on each product row card (Wall Art, Apparel, Home Decor, Prints) */
+.product-img { position: relative; }
+.product-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 999px !important;
+  padding: 5px 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* lets the hidden attribute hide the product row (its CSS would otherwise keep it showing) */
+.product-wrap[hidden] { display: none; }
+
+/* ----- Pen plotter card (plotter.html, js/plotter.js) ----- */
+.plotter-card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--bg);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--round) !important;
+  box-shadow: var(--drop);
+  overflow: hidden;
+}
+.plotter-card .brut-num {
+  background: var(--ink);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+.plotter-canvas {
+  display: block;
+  width: 100%;
+  border-bottom: var(--bw) solid var(--ink);
+}
+.plotter-foot {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ----- SERVICES section (homepage): heading + pen plotter card ----- */
+#services {
+  background: var(--bg);
+  padding: 20px 16px 100px;
+}
+#services .section-title {
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  margin: 0 0 40px;
+}
+.services-body { display: flex; justify-content: center; }
+@media (max-width: 991px) { #services .section-title { font-size: 44px; } }
+@media (max-width: 767px) {
+  #services { padding-bottom: 70px; }
+  #services .section-title { font-size: 34px; margin-bottom: 28px; }
+}
+
+/* replay button in the plotter card footer (enabled once a drawing has finished) */
+.plotter-foot { align-items: center; gap: 12px; }
+.plotter-replay {
+  background: var(--accent);
+  color: var(--ink);
+  border: var(--bw) solid var(--ink);
+  border-radius: 999px !important;
+  padding: 6px 14px;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.plotter-replay:hover:not(:disabled),
+.plotter-replay:focus-visible { background: var(--ink); color: var(--bg); }
+.plotter-replay:disabled { opacity: 0.35; }
+
+/* ----- Services page (services.html): plotter header ----- */
+.services-page #shop { background: var(--bg); }
+.services-header { text-align: center; }
+.plotter-stage {
+  position: relative;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--round) !important;
+  box-shadow: var(--drop);
+  overflow: hidden;
+}
+.plotter-stage .plotter-canvas { border-bottom: 0; }
+.plotter-stage .plotter-replay {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.services-header .brut-tape { margin-top: 26px; }
+.services-title { margin-top: 0; }
+
+/* homepage card footer: replay + link to the services page */
+.plotter-actions { display: inline-flex; align-items: center; gap: 10px; }
+.plotter-link {
+  background: var(--ink);
+  color: var(--bg);
+  border: var(--bw) solid var(--ink);
+  border-radius: 999px !important;
+  padding: 6px 14px;
+}
+.plotter-link:hover,
+.plotter-link:focus { background: var(--accent); color: var(--ink); text-decoration: none; }
+
+/* card footers with only a button (services): keep the button on the right */
+.print-foot--end { justify-content: flex-end; }
+.print-foot--end .print-buy { padding-top: 14px; padding-bottom: 14px; }

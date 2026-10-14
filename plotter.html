@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Pen Plotter | LearningCurve</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/favicon-bird.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* preview page only: centre the card */
+    .plotter-preview {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      background: var(--bg);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Preview of the pen plotter card on its own, before it goes on the site.
+       To use it elsewhere: copy the <article class="plotter-card"> block and the three
+       script tags at the bottom; the styles are already in css/main.css. -->
+  <main class="plotter-preview">
+    <article class="plotter-card">
+      <div class="brut-num">Pen plotter / bird</div>
+      <canvas class="plotter-canvas" role="img" aria-label="Animation of a pen plotter, seen from above, drawing the bird"></canvas>
+      <div class="plotter-foot">
+        <span>Top-down view</span>
+        <span>312 strokes</span>
+        <button type="button" class="plotter-replay">Replay</button>
+      </div>
+    </article>
+  </main>
+
+  <script src="js/plotter-bird-paths.js"></script>
+  <script src="js/plotter.js"></script>
+</body>
+</html>
