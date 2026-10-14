@@ -40,7 +40,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#product-strip">Home</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="index.html#main-info">Contact</a></li>
           </ul>
@@ -74,8 +74,8 @@
     <section id="shop" class="pad-sm">
       <div class="container">
         <!-- Scaredy Cat product page: the thumbnails switch the main image (js/gallery.js).
-             For colour variations, copy the variation buttons and thumbnail groups from felix.html
-             and add js/product.js. -->
+             The Type buttons (3D print, laser cut, wooden) record the choice (js/product.js).
+             For colour variations, copy the Colour block and thumbnail groups from felix.html. -->
         <div class="row" data-product>
 
           <div class="col-md-7 print-col">
@@ -99,10 +99,18 @@
 
           <div class="col-md-5 print-col">
             <article class="print-card product-info">
-              <div class="brut-num">Wall Art</div>
+              <div class="brut-num">3 types</div>
               <div class="print-body">
                 <h2 class="print-name">Scaredy Cat</h2>
                 <p class="print-meta">Size &middot; Material</p>
+              </div>
+              <div class="variant-block">
+                <p class="variant-label">Type: <span class="variant-current">3D print</span></p>
+                <div class="variant-options" role="group" aria-label="Choose how it is made">
+                  <button type="button" class="variant-btn is-active" aria-pressed="true" data-variant-name="3D print">3D print</button>
+                  <button type="button" class="variant-btn" aria-pressed="false" data-variant-name="Laser cut">Laser cut</button>
+                  <button type="button" class="variant-btn" aria-pressed="false" data-variant-name="Wooden">Wooden</button>
+                </div>
               </div>
               <div class="print-foot">
                 <span class="print-price">$&mdash;</span>
@@ -117,7 +125,7 @@
 
     <img src="img/bird-transparent.png" alt="" aria-hidden="true" class="corner-bird">
 
-    <a href="index.html" class="home-fab" aria-label="Back to home">
+    <a href="index.html#product-strip" class="home-fab" aria-label="Back to the shop on the homepage">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v11h14V10"/></svg>
       <span>Home</span>
     </a>
@@ -133,5 +141,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="js/title-ash.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="js/product.js"></script>
     </body>
 </html>

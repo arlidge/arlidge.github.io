@@ -130,21 +130,13 @@
 
             <br>
 
-            <!-- Prints dropdown: click the card to show the options (js/shop-sound.js) -->
-            <ul class="list-unstyled pricing-table text-center pricing-dropdown">
-              <li class="brut-num">01 / 04</li>
-              <li class="headline">
-                <h5 class="white">
-                  <button type="button" class="pricing-toggle" aria-expanded="false" aria-controls="prints-options">
-                    Prints <span class="pricing-caret" aria-hidden="true">&#9660;</span>
-                  </button>
-                </h5>
-              </li>
-              <li class="pricing-options" id="prints-options">
-                <a href="shop.html?type=paper" class="shop-link">Paper</a>
-                <a href="shop.html?type=plastic" class="shop-link">Plastic</a>
-              </li>
-            </ul>
+            <!-- Prints: plays the click sound once per visit, then opens the shop (js/shop-sound.js) -->
+            <a href="shop.html" class="pricing-link" data-click-sound>
+              <ul class="list-unstyled pricing-table text-center">
+                <li class="brut-num">01 / 04</li>
+                <li class="headline"><h5 class="white">Prints</h5></li>
+              </ul>
+            </a>
           </div>
 
 

@@ -2241,3 +2241,6 @@ a.print-img { display: block; }
   pointer-events: none;
   will-change: transform;
 }
+
+/* option buttons without a colour swatch (Type: 3D print / laser cut / wooden) */
+.variant-btn:not(:has(.swatch)) { padding-left: 16px; }
